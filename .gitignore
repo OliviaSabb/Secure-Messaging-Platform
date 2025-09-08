@@ -1,3 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environments
 venv/
-myenv/
-.env
+.env/
+.venv/
+env/
+ENV/
+
+# Django specific
+*.log
+db.sqlite3
+media/
+staticfiles/
+static/
+
+# Local settings & secrets
+local_settings.py
+*.env
+
+# IDE / Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Migrations (optional — if you want to regenerate them per env)
+# Uncomment if you don’t want migrations tracked:
+# */migrations/*.py
+# !*/migrations/__init__.py
