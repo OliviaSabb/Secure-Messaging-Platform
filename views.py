@@ -5,6 +5,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from .models import Message, User # Import your Message model
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from cryptography.fernet import Fernet
 
 # User Registration View
 def register_view(request):
@@ -63,7 +64,9 @@ def inbox_view(request):
         messages_page = paginator.page(1)
     except EmptyPage:
         messages_page = paginator.page(paginator.num_pages)
-    return render(request, 'messaging/inbox.html', {'messages': messages_page})
+    return render(request, 'messaging/inbox.html', {'messages': messages_page,
+     'paginator': paginator, 
+     'page_obj': messages_page, })
 
 @login_required
 def outbox_view(request):
@@ -85,7 +88,7 @@ def compose_message_view(request):
         receiver_username = request.POST.get('receiver')
         content = request.POST.get('content')
         try:
-            receiver = User.objects.get(username=receiver_username)
+            receiver = User.objects.get(username__iexact=receiver_username)
             message = Message(sender=request.user, receiver=receiver, content=content)
             # ENCRYPT MESSAGE CONTENT HERE
             message.save()
