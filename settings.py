@@ -1,7 +1,5 @@
-import os
-from pathlib import Path
-from dotenv import load_dotenv
 
+<<<<<<< HEAD
 from cryptography.fernet import Fernet
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -93,3 +91,5 @@ STATICFILES_DIRS = [BASE_DIR / "static"]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'app.User'
+=======
+>>>>>>> c6da237edcc4f9cad94d5f6eaaa710feac35c697
